@@ -1,13 +1,9 @@
-# Sample Hardhat Project
+# Ethereum-compatible mock network with predeployed contract
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+Build docker: docker build -t cryptohog/mocknet:latest .
+Run docker: docker run -d -p 8545:8545 --name eth-docker cryptohog/mocknet
 
-Try running some of the following tasks:
+ * Endpoint: 8545
+ * MockToken address: 0x28A49D544161150d504A55Ec033Ed32D229E0865
+ * ABI file: /backend_facing/MockToken.json
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
