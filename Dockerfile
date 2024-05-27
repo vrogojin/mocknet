@@ -1,5 +1,5 @@
 # Use an official node image
-FROM node:16
+FROM node:18
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Test smart contract
-CMD ["sh", "-c", "npx hardhat test"]
+RUN npx hardhat test
 
 # Install Hardhat globally
 RUN npm install -g hardhat
@@ -22,5 +22,4 @@ RUN npm install -g hardhat
 # Expose port for Hardhat node
 EXPOSE 8545
 
-# Run Hardhat node and deploy contracts
 CMD ["sh", "-c", "npx hardhat node & sleep 5 && npx hardhat run scripts/deploy.js --network localhost && tail -f /dev/null"]
