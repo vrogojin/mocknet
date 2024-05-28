@@ -9,6 +9,17 @@ async function main() {
     await token.waitForDeployment();
 
     console.log("Token deployed to:", await token.getAddress());
+
+    const recipient = "0x3b3cfcd94656e1281ffe968e625c5ede66d375c9";
+
+    const tx = await deployer.sendTransaction({
+        to: recipient,
+        value: ethers.parseEther("100.0"), // 100 ETH
+    });
+
+    // Wait for the transaction to be mined
+    await tx.wait();
+    console.log(`Transferred 100 ETH to ${recipient}. Transaction hash: ${tx.hash}`);
 }
 
 main()
